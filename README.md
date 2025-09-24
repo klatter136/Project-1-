@@ -12,9 +12,9 @@ For this project, I will design an architecture for a scalable web application. 
 
 <h2>Part 1: Traditional Server Scaling Design</h2>
 
-<img width="714" height="443" alt="image" src="https://github.com/user-attachments/assets/b09bae62-f95c-4a31-b439-01971fb504bf" />
+Here is a high-level architecture diagram for a traditional web application:
 
-Here is a high-level architecture diagram for a traditional web application.
+<img width="714" height="443" alt="image" src="https://github.com/user-attachments/assets/b09bae62-f95c-4a31-b439-01971fb504bf" />
 
 This diagram shows how traffic flows through a traditional, scalable web app setup. Clients send requests that first hit an Elastic Load Balancer, which spreads the traffic across servers in an Auto Scaling Group. The group manages both web servers for handling front-end requests and application servers that run the core business logic. To speed things up, a caching layer sits in front of the database so common queries can be served quickly without always hitting the DB. When needed, the application servers talk to the database for dynamic data, and that data is stored long-term in a storage service. This setup makes sure requests are balanced, servers scale as needed, and performance stays smooth.
 
@@ -26,9 +26,9 @@ Overall, vertical scaling is the simplest way to gain quick performance improvem
 
 <h2>Part 2: Serverless Architecture Design</h2>
 
-<img width="606" height="399" alt="image" src="https://github.com/user-attachments/assets/e633717f-e0a7-4a99-bf7f-8512425b6018" />
+Here is a high-level architecture diagram for a serverless web application:
 
-Here is a high-level architecture diagram for a serverless web application.
+<img width="606" height="399" alt="image" src="https://github.com/user-attachments/assets/e633717f-e0a7-4a99-bf7f-8512425b6018" />
 
 This diagram shows a serverless flow where clients interact with the application through an API Gateway. The gateway routes requests to AWS Lambda functions, which handle the backend logic. Depending on the request, Lambda can read or write data in DynamoDB, store or fetch files from S3, or trigger events through EventBridge for asynchronous tasks. CloudFront sits in front of S3 to deliver static content quickly to users around the world. Altogether, this setup removes the need for managing servers and scales automatically as demand changes.
 
